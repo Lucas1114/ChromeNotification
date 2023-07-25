@@ -2,30 +2,6 @@
 // here we check if we are on the Google home page or not
 
 
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === 'complete') {
-    setPopupForTab(tab);
-  }
-});
-
-chrome.tabs.onActivated.addListener((activeInfo) => {
-  chrome.tabs.get(activeInfo.tabId, (tab) => {
-    setPopupForTab(tab);
-  });
-});
-
-
-function setPopupForTab(tab) {
-  if (tab.url.includes('www.google.com')) {
-    chrome.action.setPopup({ tabId: tab.id, popup: 'popup.html' });
-  } else {
-    chrome.action.setPopup({ tabId: tab.id, popup: 'popup1.html' });
-  }
-}
-
-
-
-
 
 
 // Listen for messages from the content script
